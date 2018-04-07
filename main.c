@@ -13,7 +13,9 @@ void impressao(Tree* root){
 
 int main(){
     Tree* raiz = init_ABB();
+    printf("%d\n", treeIsEmpty(raiz));
     raiz = insere(raiz, 2);
+    printf("%d\n", treeIsEmpty(raiz));
     raiz = insere(raiz, 0);
     raiz = insere(raiz, 3);
     raiz = insere(raiz, 4);
