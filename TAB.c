@@ -1,7 +1,7 @@
 //TAB.c
 #include "TAB.h"
 
-Tree *createTree(){
+Tree* init_ABB(){
     return NULL;
 }
 
@@ -10,36 +10,83 @@ int treeIsEmpty(Tree *root){
 }
 
 //Pré-Ordem
-void printTree1(Tree *root){
+void printTreePre(Tree *root){
     printf("<");
     if (!treeIsEmpty(root)){
         printf("%d ",root->info);
-        printTree1(root->esq);
-        printTree1(root->dir);
+        printTreePre(root->esq);
+        printTreePre(root->dir);
     }
-    printf(">\n");
+    printf("> ");
 }
 
 //Simetria
-void printTree2(Tree *root){
+void printTreeSim(Tree *root){
     printf("<");
     if (!treeIsEmpty(root)){
-        printTree1(root->esq);
+        printTreeSim(root->esq);
         printf("%d ",root->info);
-        printTree1(root->dir);
+        printTreeSim(root->dir);
     }
-    printf(">\n");
+    printf("> ");
 }
 
 //Pós-Ordem
-void printTree3(Tree *root){
+void printTreePos(Tree *root){
     printf("<");
     if (!treeIsEmpty(root)){
-        printTree1(root->esq);
-        printTree1(root->dir);
+        printTreePos(root->esq);
+        printTreePos(root->dir);
         printf("%d ",root->info);
     }
-    printf(">\n");
+    printf("> ");
+}
+
+Tree* busca(Tree *root, int x){
+    if((x == root->info)||(!root)) return root;
+    if(x < root->info) return busca(root->esq, x);
+    return busca(root->dir, x);
+}
+
+Tree* criaFolha(int x){
+    Tree *novo = (Tree*)malloc(sizeof(Tree));
+    novo->info = x;
+    novo->esq = NULL;
+    novo->dir = NULL;
+    return novo;
+}
+
+Tree* insere(Tree *root, int x){
+    if(!root) return criaFolha(x);
+    if(x < root->info) root->esq = insere(root->esq, x);
+    else if(x > root->info) root->dir = insere(root->dir, x);
+    return root;
+}
+
+Tree* retira(Tree* root, int x){
+    if(!root) return root;
+    if(x < root->info) root->esq = retira(root->esq, x);
+    else if(x > root->info) root->dir = retira(root->dir, x);
+    else{
+        if((!root->esq)&&(!root->dir)){
+            free(root);
+            root = NULL;
+        }
+        else if((!root->esq)||(!root->dir)){
+            Tree* temp = root;
+            if(!root->esq) root = root->dir;
+            else root = root->esq;
+            free(temp);
+        }
+        else{
+            Tree* aux = root->esq;
+            while(aux->dir) aux = aux->dir;
+            root->info = aux->info;
+            aux->info = x;
+            root->esq = retira(root->esq, x);
+        }
+    }
+    return root;
 }
 
 int maior(int x, int y){

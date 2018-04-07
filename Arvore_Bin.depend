@@ -1,8 +1,11 @@
 # depslib dependency file v1.0
-1522674191 source:c:\users\joaog\onedrive\documentos\estruturas de dados\arvore_bin\tab.c
+1523060722 source:c:\users\joaog\onedrive\documentos\estruturas de dados\arvore_bin\tab.c
 	"TAB.h"
 
-1522674191 c:\users\joaog\onedrive\documentos\estruturas de dados\arvore_bin\tab.h
+1523060744 c:\users\joaog\onedrive\documentos\estruturas de dados\arvore_bin\tab.h
 	<stdio.h>
 	<stdlib.h>
+
+1523058252 source:c:\users\joaog\onedrive\documentos\estruturas de dados\arvore_bin\main.c
+	"TAB.h"
 
