@@ -19,6 +19,7 @@ Tree* busca(Tree *root, int x); //Retorna ponteiro para o nó que contém info == 
 Tree* insere(Tree *root, int x); //Insere elemento com info == x na árvore (Sem repetições)(Retorna ponteiro da árvore modificada)
 Tree* retira(Tree *root, int x); //Remove elemento da árvore (Retorna ponteiro da árvore modificada)
 int altura(Tree *a); //Retorna a altura da árvore
+void libera(Tree *root); //Libera a estrutura (usar após o uso)
 
 
 

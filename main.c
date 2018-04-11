@@ -24,5 +24,6 @@ int main(){
     impressao(raiz);
     Tree* t = busca(raiz, 4);
     printf("%d\n", t->info);
+    libera(raiz);
     return 0;
 }

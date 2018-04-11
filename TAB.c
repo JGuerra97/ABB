@@ -98,3 +98,11 @@ int altura(Tree *a){ //Calcula a altura da árvore
     if (!a) return -1; //Altura = -1 se a árvore está vazia
     return 1 + maior(altura(a->esq), altura(a->dir)); //Altura da maior das sub-árvores +1 da raiz
 }
+
+void libera(Tree *root){
+    if(root){
+        libera(root->esq); //Libera folhas antes da raiz
+        libera(root->dir);
+        free(root);
+    }
+}
